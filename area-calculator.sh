@@ -51,10 +51,8 @@ calculate_area() {
     type_text "The area of the $1 is $area units." 0.08
 }
 
-type_text "What shape would you like to calculate the area of?" 0.08
+type_text "What shape would you like to calculate the area of?" 0.05
 read shape
-
-shape=$(echo "$shape" | tr '[:upper]' '[:lower]')
 
 case $shape in
     rectangle|triangle)
