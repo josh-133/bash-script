@@ -1,4 +1,10 @@
 #!/bin/bash
+# MATHS TOOL SUITE WITH THE FOLLOWING FEATURES
+# Calculating PERIMETER, AREA & VOLUME for:
+#       - Rectangles
+#       - Squares
+#       - Triangles
+#       - Circles/Spheres
 
 # makes text look like its being typed with an added sound effect
 type_text() {
@@ -18,13 +24,13 @@ read_number() {
     local prompt=$1
     local var
     while true; do
-        type_text "$prompt" 0.08
+        type_text "$prompt"
         read var
         if [[ "$var" =~ ^[0-9]+([.][0-9]+)?$ ]]; then
             number_result="$var"
             return
         else
-            type_text "Please enter a valid number: " 0.08
+            type_text "Please enter a valid number: " 
         fi
     done
 }
@@ -44,12 +50,12 @@ calculate_perimeter() {
             perimeter=$(echo "2 * 3.14159 * $2" | bc)
             ;;
         *)
-            type_text "Sorry I don't know how to calculate the perimeter of $1." 0.08
+            type_text "Sorry I don't know how to calculate the perimeter of $1." 
             return
             ;;
     esac
 
-    type_text "The perimeter of the $1 is $perimeter units." 0.08
+    type_text "The perimeter of the $1 is $perimeter units." 
 }
 
 calculate_area() {
@@ -67,12 +73,12 @@ calculate_area() {
             area=$(echo "3.14159 * $2 * $2" | bc)
             ;;
         *)
-            type_text "Sorry I don't know how to calculate the area of $1." 0.08
+            type_text "Sorry I don't know how to calculate the area of $1." 
             return
             ;;
     esac
 
-    type_text "The area of the $1 is $area units squared." 0.08
+    type_text "The area of the $1 is $area units squared." 
 }
 
 calculate_volume() {
@@ -90,16 +96,16 @@ calculate_volume() {
             volume=$(echo "4 * 3.14159 * $2 * $2 * $2" | bc)
             ;;
         *)
-            type_text "Sorry I don't know how to calculate the volume of $1." 0.08
+            type_text "Sorry I don't know how to calculate the volume of $1." 
             return
             ;;
     esac
 
-    type_text "The volume of the $1 is $volume units cubed." 0.08
+    type_text "The volume of the $1 is $volume units cubed." 
 }
 
 # Beginning of program
-type_text "Welcome to the Maths Tool Suite"
+type_text "WELCOME TO THE MATHS TOOL SUITE"
 type_text "Would you like to calculate perimeter, area, or volume? (select 1, 2, or 3)"
 read option
 
@@ -162,6 +168,6 @@ case $shape in
         fi
         ;;
     *)
-        type_text "Unknown shape $shape" 0.08
+        type_text "Unknown shape $shape" 
         ;;
 esac
