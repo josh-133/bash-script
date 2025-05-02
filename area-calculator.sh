@@ -13,6 +13,21 @@ type_text() {
     echo
 }
 
+read_number() {
+    local prompt=$1
+    local var
+    while true; do
+        type_text "$prompt" 0.08
+        read var
+        if [[ "$var" =~ ^[0-9]+([.][0-9]+)?$ ]]; then
+            number_result="$var"
+            return
+        else
+            type_text "Please enter a valid number: " 0.08
+        fi
+    done
+}
+
 calculate_area() {
     case $1 in
         rectangle)
@@ -43,20 +58,20 @@ shape=$(echo "$shape" | tr '[:upper]' '[:lower]')
 
 case $shape in
     rectangle|triangle)
-        type_text "Enter the base/length" 0.08
-        read length
-        type_text "Enter the height/width" 0.08
-        read width
+        read_number "Enter the base/length:"
+        length=$number_result
+        read_number "Enter the height/width:"
+        width=$number_result
         calculate_area "$shape" "$length" "$width"
         ;;
     square)
-        type_text "Enter the length of one side" 0.08
-        read length
+        read_number "Enter the length of one side:"
+        length=$number_result
         calculate_area "$shape" "$length"
         ;;
     circle)
-        type_text "Enter the radius" 0.08
-        read radius
+        read_number "Enter the radius:"
+        radius=$number_result
         calculate_area "$shape" "$radius"
         ;;
     *)
