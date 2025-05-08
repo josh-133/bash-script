@@ -35,6 +35,10 @@ read_number() {
     done
 }
 
+to_lower() {
+    echo "$1" | tr '[:upper:]' '[:lower:]'
+}
+
 calculate_perimeter() {
     case $1 in
         rectangle)
@@ -121,6 +125,17 @@ else
 fi
 
 read shape
+
+shape=$(to_lower "$shape")
+
+# Now validate the shape
+if [[ "$shape" =~ ^(rectangle|square|triangle|circle)$ ]]; then
+    # valid shape, continue
+    :
+else
+    type_text "Invalid shape"
+    exit 1
+fi
 
 case $shape in
     rectangle|triangle)
