@@ -114,11 +114,11 @@ type_text "Would you like to calculate perimeter, area, or volume? (select 1, 2,
 read option
 
 if [[ $option == 1 ]]; then
-    type_text "What shape would you like to calculate the perimeter of?" 0.05
+    type_text "What shape would you like to calculate the perimeter of?"
 elif [[ $option == 2 ]]; then
-    type_text "What shape would you like to calculate the area of?" 0.05
+    type_text "What shape would you like to calculate the area of?"
 elif [[ $option == 3 ]]; then
-    type_text "What shape would you like to calculate the volume of?" 0.05
+    type_text "What shape would you like to calculate the volume of?"
 else
     type_text "Please enter either '1', '2', or '3' next time"
     exit 1
